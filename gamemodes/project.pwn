@@ -47,18 +47,37 @@ main(){}
 #define DSTLH                   DIALOG_STYLE_TABLIST_HEADERS
 
 #define C_WHITE                 0xFFFFFFFF
+#define C_GRAY                  0xcecfd1FF
+#define C_BLUE                  0x2d93f8FF
+#define C_RED                   0xfa6707FF
+#define C_YELLOW                0xf2eb09FF
 
 new MySQL:dbHandle;
+new Text:logo_td;
+new Text:arrowleft[MAX_PLAYERS], Text:arrowright[MAX_PLAYERS], Text:prevclick[MAX_PLAYERS], Text:nextclick[MAX_PLAYERS], Text:select[MAX_PLAYERS];
 
 enum PI {
     pID,
     pName[MAX_PLAYER_NAME],
     pPassword[65],
     pSalt[11],
+    pEmail[64],
+    pSex,
+    pSkin,
+    pRegIP[16],
+    pRegData[13],
+    pLevel,
+    pExp,
+    pMoney,
+    pAdmin,
 }
 new PlayerInfo[MAX_PLAYERS][PI];
 new TimerConnectServerPlayer[MAX_PLAYERS];
 new WrongPassword[MAX_PLAYERS];
+new RegSkin[MAX_PLAYERS] = 0;
+new SelectSkin[MAX_PLAYERS];
+new RegStatus[MAX_PLAYERS] = 0;
+new bool:pLogin[MAX_PLAYERS];
 
 #include "/server/server.pwn"
 #include "/server/player.pwn"
